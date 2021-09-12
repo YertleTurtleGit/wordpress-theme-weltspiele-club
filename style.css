@@ -1,0 +1,336 @@
+/*
+Theme Name: Weltspiele Club Theme
+Author: Endric Merker
+Description: Weltspiele Club Theme
+Version: 1.0
+License: GNU General Public License v3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.html
+Text Domain: wordpress-theme-weltspiele-club
+*/
+
+:root {
+   --colorText: white;
+   --colorBackground: black;
+}
+
+* {
+   z-index: 10;
+   margin: 0;
+   padding: 0;
+   border: 0;
+   transition: all 0.5s;
+}
+
+html {
+   scroll-behavior: smooth;
+}
+
+body {
+   font-family: "Roboto", sans-serif;
+   font-size: x-large;
+   margin: 0;
+   padding: 0;
+   border: 0;
+
+   color: var(--colorText);
+   background-color: var(--colorBackground);
+}
+
+a {
+   color: var(--colorText);
+   text-decoration: underline 0.25rem;
+   text-underline-offset: 0.5rem;
+}
+
+.content {
+   margin: max(5%, 20rem);
+   position: relative;
+   max-width: 50%;
+   width: 50%;
+   height: auto;
+}
+
+.content p,
+.content li {
+   max-width: 40rem;
+}
+
+.single-content p,
+.single-content li,
+ol li {
+   margin-bottom: 4rem;
+}
+
+ol {
+   margin-left: 2rem;
+}
+
+h2 {
+   margin-bottom: 2rem;
+   margin-top: 2rem;
+}
+
+.menu {
+   text-align: center;
+   display: inline-block;
+   vertical-align: bottom;
+   list-style: none;
+}
+
+.menu-item {
+   float: left;
+   padding: 0.5rem;
+   display: inline;
+}
+
+.menu-item > a {
+   display: block;
+   color: var(--colorText);
+   text-decoration: none;
+   padding: 0.5rem;
+   font-weight: 600;
+}
+
+.menu-item > a:hover {
+   text-decoration: underline 0.25rem;
+   text-underline-offset: 0.5rem;
+}
+
+.current-menu-item > a {
+   text-decoration: underline 0.25rem;
+   text-underline-offset: 0.5rem;
+}
+
+.toggle-nav {
+   display: none;
+}
+
+.menu-collapse {
+   position: absolute;
+   right: 3rem;
+   top: 3rem;
+   background-color: transparent;
+   opacity: 1;
+}
+
+#logo,
+#logo-small {
+   animation: random-rotation 20s ease-in-out infinite;
+}
+
+#logo-div,
+#logo-small-div {
+   position: sticky;
+   top: 0;
+   left: 0;
+   width: 13rem;
+   height: auto;
+}
+
+#logo-div *,
+#logo-small-div * {
+   width: 100%;
+   height: auto;
+}
+
+#logo-small-div {
+   scale: 0.75;
+}
+
+#background-video {
+   /*filter: saturate(75%) blur(2rem);*/
+   position: absolute;
+   translate: -50% -50%;
+   top: 50%;
+   left: 50%;
+   z-index: 0;
+   min-width: 100vw;
+   min-height: 100vh;
+   animation: fade-in 5s ease-in 1;
+}
+
+#language-video {
+   position: absolute;
+   top: 50%;
+   left: 0;
+   translate: 0 -50%;
+   z-index: 0;
+   width: 100%;
+   height: auto;
+}
+
+#sticky-landing-page {
+   float: center;
+   z-index: 0;
+   margin-top: 100vh;
+   overflow: hidden;
+   position: sticky;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: auto;
+}
+
+.offset-div {
+   margin-top: 75vh;
+}
+
+#landing-background-video {
+   min-width: 100%;
+   min-height: 100%;
+}
+
+#background-video {
+   z-index: 0;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: -50% -50%;
+   min-width: 100%;
+   min-height: 100%;
+   filter: grayscale();
+}
+
+.program {
+   display: flex;
+   flex-flow: row wrap;
+   gap: 4rem 8rem;
+}
+
+.program ul {
+   list-style: none;
+   padding: 0;
+}
+
+.program-month {
+   flex-grow: 1;
+   max-width: 25rem;
+   min-width: 17.5rem;
+   width: 40%;
+}
+
+.program-month-title {
+   font-size: larger;
+   font-weight: 800;
+}
+
+.program-event {
+   padding-bottom: 2.5rem;
+   float: center;
+}
+
+.program-event-date {
+   cursor: pointer;
+   font-size: xx-large;
+   font-weight: 300;
+}
+
+.program-event-date a {
+   color: var(--colorText);
+   text-decoration: none;
+}
+
+.program-event-date:hover {
+   text-decoration: underline 0.25rem;
+   text-underline-offset: 0.25rem;
+}
+
+.program-event-category {
+   position: absolute;
+   font-size: medium;
+   background-color: var(--colorText);
+   color: var(--colorBackground);
+   translate: 0.5rem 0.5rem;
+   padding: 0.1rem;
+}
+
+.program-event-text p {
+   margin: 0;
+}
+
+.event-image-div * {
+   width: 100%;
+   max-width: min(25rem, 100%);
+   height: auto;
+   margin-top: 2rem;
+}
+
+.event-links {
+   display: flex;
+   gap: 1.5rem;
+}
+
+.event-links a {
+   text-decoration: none;
+}
+
+.event-links .dashicons {
+   font-size: xx-large;
+}
+
+@keyframes fade-in {
+   0% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+@keyframes random-rotation {
+   0% {
+      rotate: 0deg;
+   }
+   25% {
+      rotate: 180deg;
+   }
+   50% {
+      rotate: -90deg;
+   }
+   75% {
+      rotate: -180deg;
+   }
+   100% {
+      rotate: 360deg;
+   }
+}
+
+@media (max-width: 800px) {
+   .toggle-nav {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 2rem;
+      padding-right: 2%;
+      z-index: 30;
+      translate: -50% 0;
+      color: var(--colorText);
+      text-decoration: none;
+      font-size: xx-large;
+      display: inline-block;
+   }
+
+   .menu-collapse {
+      display: none;
+      opacity: 0;
+      position: absolute;
+      z-index: 20;
+      top: 0;
+      right: 0;
+      padding: 10%;
+      transition: opacity 0.25s;
+      background-color: rgba(0, 0, 0, 0.5);
+   }
+
+   .menu-item {
+      float: unset;
+   }
+
+   .content {
+      margin: 5%;
+      position: relative;
+      max-width: 90%;
+      width: 90%;
+      height: auto;
+   }
+}
