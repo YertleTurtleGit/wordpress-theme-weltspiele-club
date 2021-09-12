@@ -31,11 +31,6 @@ jobs:
     - name: Remove File
       uses: JesseTG/rm@v1.0.0
       with:
-        path: screenshot.png
-        
-    - name: Remove File
-      uses: JesseTG/rm@v1.0.0
-      with:
         path: .eslintrc.js
         
     - name: Remove File
@@ -61,7 +56,7 @@ jobs:
       uses: swinton/screenshot-website@v1.x
       with:
         width: 1200
-        source: //radio.weltspiele.club
+        source: http://club.weltspiele.club
         destination: screenshot.png
         full-page: false
           
