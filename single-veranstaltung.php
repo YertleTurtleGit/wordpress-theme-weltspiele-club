@@ -28,16 +28,19 @@
                                                 <h1 class='page-title'><?php the_title(); ?></h1>
                                         </div>
 
-                                        <?php $id = get_the_ID(); ?>
+                                        <?php
+                                        $id = get_the_ID();
+                                        $event = new Event($id);
+                                        ?>
 
-                                        <p><strong><?php echo get_veranstaltung_datum($id); ?></strong></p>
+                                        <p><strong><?php echo $event->get_date_string(); ?></strong></p>
 
                                         <div class="event-links">
                                                 <?php
-                                                $tickets_url = get_post_meta($id, 'tickets', true);
-                                                $facebook_url = get_post_meta($id, 'facebook', true);
-                                                $instagram_url = get_post_meta($id, 'instagram', true);
-                                                $soundcloud_url = get_post_meta($id, 'soundcloud', true);
+                                                $tickets_url = $this->get_ticket_url();
+                                                $facebook_url = $this->get_facebook_url();
+                                                $instagram_url = $this->get_instagram_url();
+                                                $sound_cloud_url = $this->get_sound_cloud_url();
                                                 ?>
 
                                                 <?php if ($tickets_url) { ?>
@@ -58,16 +61,17 @@
                                                         </a>
                                                 <?php } ?>
 
-                                                <?php if ($soundcloud_url) { ?>
-                                                        <a href="<?php echo $soundcloud_url; ?>" target="_blank">
+                                                <?php if ($sound_cloud_url) { ?>
+                                                        <a href="<?php echo $sound_cloud_url; ?>" target="_blank">
                                                                 <span class="dashicons dashicons-format-audio"></span>
                                                         </a>
                                                 <?php } ?>
                                         </div>
 
 
-
-                                        <?php echo get_veranstaltung_bild($id); ?>
+                                        <div class="event-image-div">
+                                                <img src="<?php echo $event->get_image_url(); ?>" />
+                                        </div>
                                 </div>
 
                                 <div class="single-event-row">

@@ -1,4 +1,9 @@
 <?php
+require get_theme_file_path('Event.php');
+require get_theme_file_path('EventSeries.php');
+require get_theme_file_path('Category.php');
+
+
 function init_hauptmenue()
 {
     register_nav_menu('hauptmenue', __('Hauptmenü'));
@@ -87,10 +92,11 @@ add_action('widgets_init', 'widgets_init');
 
 add_theme_support('post-thumbnails');
 
-function ww_load_dashicons(){
+function ww_load_dashicons()
+{
     wp_enqueue_style('dashicons');
- }
- add_action('wp_enqueue_scripts', 'ww_load_dashicons', 999);
+}
+add_action('wp_enqueue_scripts', 'ww_load_dashicons', 999);
 
 // Removes from admin menu
 add_action('admin_menu', 'my_remove_admin_menus');
