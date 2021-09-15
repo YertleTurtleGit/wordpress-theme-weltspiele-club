@@ -43,10 +43,8 @@ a {
 }
 
 .content {
-   margin: max(5%, 20rem);
+   margin-left: max(5%, 20rem);
    position: relative;
-   max-width: 50%;
-   width: 50%;
    height: auto;
 }
 
@@ -248,6 +246,17 @@ h2 {
    margin: 0;
 }
 
+.single-event {
+   width: 100%;
+   display: flex;
+   gap: 3rem;
+   flex-wrap: wrap;
+}
+
+.single-event-row {
+   width: 30rem;
+}
+
 .event-image-div * {
    width: 100%;
    max-width: min(25rem, 100%);
@@ -256,12 +265,18 @@ h2 {
 }
 
 .event-links {
+   margin: 1.5rem;
+   margin-left: 0;
    display: flex;
    gap: 1.5rem;
 }
 
 .event-links a {
    text-decoration: none;
+}
+
+.event-links a:hover {
+   filter: blur(0.1rem);
 }
 
 .event-links .dashicons {
