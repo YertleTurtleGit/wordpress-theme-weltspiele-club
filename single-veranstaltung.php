@@ -37,10 +37,10 @@
 
                                         <div class="event-links">
                                                 <?php
-                                                $tickets_url = $this->get_ticket_url();
-                                                $facebook_url = $this->get_facebook_url();
-                                                $instagram_url = $this->get_instagram_url();
-                                                $sound_cloud_url = $this->get_sound_cloud_url();
+                                                $tickets_url = $event->get_ticket_url();
+                                                $facebook_url = $event->get_facebook_url();
+                                                $instagram_url = $event->get_instagram_url();
+                                                $sound_cloud_url = $event->get_sound_cloud_url();
                                                 ?>
 
                                                 <?php if ($tickets_url) { ?>
