@@ -1,5 +1,7 @@
 <?php
 
+// TODO Implement Event class.
+
 class Event
 {
     private const SLUG = 'veranstaltung';
