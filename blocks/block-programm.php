@@ -38,7 +38,7 @@
                                 <?php echo $event->get_begin_date()->format('d.m.'); ?>
                             </a>
                         </span>
-                        <?php if ($event->get_category()) { ?>
+                        <?php if (!is_null($event->get_category())) { ?>
                             <span class="program-event-category">
                                 <?php echo $event->get_category()->get_title(); ?>
                             </span>
@@ -74,7 +74,7 @@
                                 <?php echo $event->get_begin_date()->format('d.m.'); ?>
                             </a>
                         </span>
-                        <?php if ($event->get_category()) { ?>
+                        <?php if (!is_null($event->get_category())) { ?>
                             <span class="program-event-category">
                                 <?php echo $event->get_category()->get_title(); ?>
                             </span>
