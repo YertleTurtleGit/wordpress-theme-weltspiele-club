@@ -67,7 +67,7 @@
                 $event = new Event($id);
             ?>
 
-                <?php if ($month == $next_month) { ?>
+                <?php if ($event->get_begin_date()->format('m') == $next_month) { ?>
                     <li class="program-event">
                         <span class="program-event-date">
                             <a href="<?php echo $event->get_url(); ?>">

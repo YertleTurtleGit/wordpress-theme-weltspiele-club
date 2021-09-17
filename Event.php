@@ -45,7 +45,7 @@ class Event
 
     public function get_category(): EventCategory
     {
-        return new EventCategory(get_post_meta($this->id, Event::CATEGORY, true));
+        return new EventCategory(intval(get_post_meta($this->id, Event::CATEGORY, true)));
     }
 
     public function get_date_string(): string
