@@ -22,16 +22,16 @@
 <div class="content">
 
         <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                        <?php
+                        $id = get_the_ID();
+                        $event = new Event($id);
+                        ?>
+
                         <div class="single-event">
                                 <div class="single-event-row">
                                         <div id='page-header'>
-                                                <h1 class='page-title'><?php the_title(); ?></h1>
+                                                <h1 class='page-title'><?php $event->get_title(); ?></h1>
                                         </div>
-
-                                        <?php
-                                        $id = get_the_ID();
-                                        $event = new Event($id);
-                                        ?>
 
                                         <p><strong><?php echo $event->get_date_string(); ?></strong></p>
 

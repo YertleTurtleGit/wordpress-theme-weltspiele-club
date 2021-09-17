@@ -28,6 +28,11 @@ class Event
         $this->id = $id;
     }
 
+    public function get_title(): string
+    {
+        return strval(get_the_title($this->id));
+    }
+
     public function get_date_string(): string
     {
         $multi_day = boolval(get_post_meta($this->id, Event::MULTI_DAY, true));
@@ -68,21 +73,21 @@ class Event
 
     public function get_ticket_url(): string
     {
-        return strval(get_post_meta($id, 'tickets', true));
+        return strval(get_post_meta($this->id, Event::TICKET_URL, true));
     }
 
     public function get_facebook_url(): string
     {
-        return strval(get_post_meta($id, 'facebook', true));
+        return strval(get_post_meta($this->id, Event::FACEBOOK_URL, true));
     }
 
     public function get_instagram_url(): string
     {
-        return strval(get_post_meta($id, 'instagram', true));
+        return strval(get_post_meta($this->id, Event::INSTAGRAM_URL, true));
     }
 
     public function get_sound_cloud_url(): string
     {
-        return strval(get_post_meta($id, 'soundcloud', true));
+        return strval(get_post_meta($this->id, Event::SOUND_CLOUD_URL, true));
     }
 }
