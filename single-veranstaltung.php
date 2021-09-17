@@ -76,7 +76,7 @@
 
                                 <div class="single-event-row">
                                         <div class="single-content">
-                                                <?php the_content(); ?>
+                                                <?php echo $event->get_content(); ?>
                                         </div>
                                 </div>
 

@@ -33,6 +33,11 @@ class Event
         return strval(get_the_title($this->id));
     }
 
+    public function get_content(): string
+    {
+        return strval(apply_filters('the_content', get_post_field('post_content', $this->id)));
+    }
+
     public function get_date_string(): string
     {
         $multi_day = boolval(get_post_meta($this->id, Event::MULTI_DAY, true));
