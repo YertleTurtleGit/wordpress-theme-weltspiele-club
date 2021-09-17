@@ -48,7 +48,7 @@ class Event
         $categoryId = get_post_meta($this->id, Event::CATEGORY, true);
 
         if (is_nan($categoryId)) {
-            return null;
+            return false;
         }
         return new EventCategory(intval($categoryId));
     }
