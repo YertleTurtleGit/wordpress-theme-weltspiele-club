@@ -30,7 +30,7 @@
                         <div class="single-event">
                                 <div class="single-event-row">
                                         <div id='page-header'>
-                                                <h1 class='page-title'><?php $event->get_title(); ?></h1>
+                                                <h1 class='page-title'><?php echo $event->get_title(); ?></h1>
                                         </div>
 
                                         <p><strong><?php echo $event->get_date_string(); ?></strong></p>
