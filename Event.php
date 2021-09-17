@@ -45,12 +45,11 @@ class Event
 
     public function get_category(): EventCategory
     {
-        $categoryId = get_post_meta($this->id, Event::CATEGORY, true);
-
-        if (is_nan($categoryId)) {
-            return false;
+        if (metadata_exists(Event::SLUG, $this->id, Event::CATEGORY)) {
+            $categoryId = get_post_meta($this->id, Event::CATEGORY, true);
+            return new EventCategory(intval($categoryId));
         }
-        return new EventCategory(intval($categoryId));
+        return null;
     }
 
     public function get_date_string(): string
