@@ -28,24 +28,23 @@
             while ($loop->have_posts()) : $loop->the_post();
 
                 $id = get_the_ID();
-                $title = get_the_title();
-                $startdatum = date_create(get_post_meta($id, 'startdatum')[0])->format('d.m.');
-                $month = date_create(get_post_meta($id, 'startdatum')[0])->format('m');
-                $kategorie = get_term(get_post_meta($id, 'kategorie')[0])->name;
+                $event = new Event($id);
             ?>
 
-                <?php if ($month == $current_month) { ?>
+                <?php if ($event->get_begin_date()->format('m') == $current_month) { ?>
                     <li class="program-event">
                         <span class="program-event-date">
-                            <a href="<?php echo get_permalink(); ?>"><?php echo $startdatum; ?></a>
+                            <a href="<?php echo $event->get_url(); ?>">
+                                <?php echo $event->get_begin_date()->format('d.m.'); ?>
+                            </a>
                         </span>
-                        <?php if ($kategorie) { ?>
+                        <?php if ($event->get_category()) { ?>
                             <span class="program-event-category">
-                                <?php echo $kategorie; ?>
+                                <?php echo $event->get_category()->get_title(); ?>
                             </span>
                         <?php } ?>
                         <span class="program-event-text">
-                            <p><?php echo $title; ?> </p>
+                            <p><?php echo $event->get_title(); ?> </p>
                         </span>
                     </li>
                 <?php } ?>
@@ -65,24 +64,23 @@
             while ($loop->have_posts()) : $loop->the_post();
 
                 $id = get_the_ID();
-                $title = get_the_title();
-                $startdatum = date_create(get_post_meta($id, 'startdatum')[0])->format('d.m.');
-                $month = date_create(get_post_meta($id, 'startdatum')[0])->format('m');
-                $kategorie = get_term(get_post_meta($id, 'kategorie')[0])->name;
+                $event = new Event($id);
             ?>
 
                 <?php if ($month == $next_month) { ?>
                     <li class="program-event">
                         <span class="program-event-date">
-                            <a href="<?php echo get_permalink(); ?>"><?php echo $startdatum; ?></a>
+                            <a href="<?php echo $event->get_url(); ?>">
+                                <?php echo $event->get_begin_date()->format('d.m.'); ?>
+                            </a>
                         </span>
-                        <?php if ($kategorie) { ?>
+                        <?php if ($event->get_category()) { ?>
                             <span class="program-event-category">
-                                <?php echo $kategorie; ?>
+                                <?php echo $event->get_category()->get_title(); ?>
                             </span>
                         <?php } ?>
                         <span class="program-event-text">
-                            <p><?php echo $title; ?> </p>
+                            <p><?php echo $event->get_title(); ?> </p>
                         </span>
                     </li>
                 <?php } ?>

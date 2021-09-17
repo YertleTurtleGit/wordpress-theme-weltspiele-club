@@ -1,7 +1,5 @@
 <?php
 
-// TODO Implement EventSeries class.
-
 class EventSeries
 {
     private const SLUG = 'event_series';

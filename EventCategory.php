@@ -1,8 +1,6 @@
 <?php
 
-// TODO Implement Category class.
-
-class Category
+class EventCategory
 {
     private const SLUG = 'kategorie';
 
@@ -11,5 +9,10 @@ class Category
     public function __construct(int $id)
     {
         $this->id = $id;
+    }
+
+    public function get_title(): string
+    {
+        return strval(get_term($this->id)->name);
     }
 }

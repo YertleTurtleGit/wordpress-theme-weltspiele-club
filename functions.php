@@ -1,7 +1,7 @@
 <?php
 require get_theme_file_path('Event.php');
 require get_theme_file_path('EventSeries.php');
-require get_theme_file_path('Category.php');
+require get_theme_file_path('EventCategory.php');
 
 
 function init_hauptmenue()

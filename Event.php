@@ -38,6 +38,16 @@ class Event
         return strval(apply_filters('the_content', get_post_field('post_content', $this->id)));
     }
 
+    public function get_url(): string
+    {
+        return strval(get_the_permalink($this->id));
+    }
+
+    public function get_category(): EventCategory
+    {
+        return new EventCategory(get_post_meta($this->id, Event::CATEGORY, true));
+    }
+
     public function get_date_string(): string
     {
         $multi_day = boolval(get_post_meta($this->id, Event::MULTI_DAY, true));
@@ -68,6 +78,11 @@ class Event
         }
 
         return $date_string;
+    }
+
+    public function get_begin_date(): DateTime
+    {
+        return date_create(get_post_meta($this->id, Event::BEGIN_DATE, true));
     }
 
     public function get_image_url(string $size = 'large'): string
