@@ -45,7 +45,7 @@ class Event
 
     public function get_category(): EventCategory
     {
-        if (metadata_exists(Event::SLUG, $this->id, Event::CATEGORY)) {
+        if (metadata_exists('post', $this->id, Event::CATEGORY)) {
             $categoryId = get_post_meta($this->id, Event::CATEGORY, true);
             return new EventCategory(intval($categoryId));
         }
