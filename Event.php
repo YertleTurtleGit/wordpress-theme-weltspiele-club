@@ -47,11 +47,10 @@ class Event
     {
         $categoryId = get_post_meta($this->id, Event::CATEGORY, true);
 
-        if ($categoryId) {
-            return new EventCategory(intval($categoryId));
-        } else {
+        if (is_nan($categoryId)) {
             return null;
         }
+        return new EventCategory(intval($categoryId));
     }
 
     public function get_date_string(): string
