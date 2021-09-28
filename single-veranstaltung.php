@@ -34,8 +34,8 @@
                                         </div>
 
                                         <p><strong>
-                                                        <?php echo $event->get_date_string(); ?>
-                                                </strong></p>
+                                                <?php echo $event->get_date_string(); ?>
+                                        </strong></p>
 
 
                                         <div class="event-links">

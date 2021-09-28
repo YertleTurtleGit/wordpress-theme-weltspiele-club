@@ -91,8 +91,8 @@ class Event
 
     public function get_image_url(string $size = 'large'): string
     {
-        $image = get_post_meta($this->id, Event::IMAGE, true);
-        if ($image) {
+        if (metadata_exists('post', $this->id, Event::IMAGE)) {
+            $image = get_post_meta($this->id, Event::IMAGE, true);
             return wp_get_attachment_image_src($image, $size)[0];
         } else {
             return null;
