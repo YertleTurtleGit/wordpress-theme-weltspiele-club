@@ -28,6 +28,30 @@ class Event
         $this->id = $id;
     }
 
+    public function get_title(): string
+    {
+        return strval(get_the_title($this->id));
+    }
+
+    public function get_content(): string
+    {
+        return strval(apply_filters('the_content', get_post_field('post_content', $this->id)));
+    }
+
+    public function get_url(): string
+    {
+        return strval(get_the_permalink($this->id));
+    }
+
+    public function get_category(): EventCategory
+    {
+        if (metadata_exists('post', $this->id, Event::CATEGORY)) {
+            $categoryId = get_post_meta($this->id, Event::CATEGORY, true);
+            return new EventCategory(intval($categoryId));
+        }
+        return null;
+    }
+
     public function get_date_string(): string
     {
         $multi_day = boolval(get_post_meta($this->id, Event::MULTI_DAY, true));
@@ -60,6 +84,11 @@ class Event
         return $date_string;
     }
 
+    public function get_begin_date(): DateTime
+    {
+        return date_create(get_post_meta($this->id, Event::BEGIN_DATE, true));
+    }
+
     public function get_image_url(string $size = 'large'): string
     {
         $image = get_post_meta($this->id, Event::IMAGE, true);
@@ -68,21 +97,21 @@ class Event
 
     public function get_ticket_url(): string
     {
-        return strval(get_post_meta($id, 'tickets', true));
+        return strval(get_post_meta($this->id, Event::TICKET_URL, true));
     }
 
     public function get_facebook_url(): string
     {
-        return strval(get_post_meta($id, 'facebook', true));
+        return strval(get_post_meta($this->id, Event::FACEBOOK_URL, true));
     }
 
     public function get_instagram_url(): string
     {
-        return strval(get_post_meta($id, 'instagram', true));
+        return strval(get_post_meta($this->id, Event::INSTAGRAM_URL, true));
     }
 
     public function get_sound_cloud_url(): string
     {
-        return strval(get_post_meta($id, 'soundcloud', true));
+        return strval(get_post_meta($this->id, Event::SOUND_CLOUD_URL, true));
     }
 }
