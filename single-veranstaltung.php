@@ -69,9 +69,11 @@
                                         </div>
 
 
-                                        <div class="event-image-div">
-                                                <img src="<?php echo $event->get_image_url(); ?>" />
-                                        </div>
+                                        <?php if ($event->get_image_url()) { ?>
+                                                <div class="event-image-div">
+                                                        <img src="<?php echo $event->get_image_url(); ?>" />
+                                                </div>
+                                        <?php } ?>
                                 </div>
 
                                 <div class="single-event-row">
