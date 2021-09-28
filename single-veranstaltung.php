@@ -33,7 +33,10 @@
                                                 <h1 class='page-title'><?php echo $event->get_title(); ?></h1>
                                         </div>
 
-                                        <p><strong><?php echo $event->get_date_string(); ?></strong></p>
+                                        <p><strong>
+                                                <?php echo $event->get_date_string(); ?>
+                                        </strong></p>
+
 
                                         <div class="event-links">
                                                 <?php
