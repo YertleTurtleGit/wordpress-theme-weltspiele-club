@@ -34,8 +34,8 @@
                                         </div>
 
                                         <p><strong>
-                                                <?php echo $event->get_date_string(); ?>
-                                        </strong></p>
+                                                        <?php echo $event->get_date_string(); ?>
+                                                </strong></p>
 
 
                                         <div class="event-links">
@@ -72,9 +72,11 @@
                                         </div>
 
 
-                                        <?php if ($event->get_image_url()) { ?>
+                                        <?php
+                                        $image_url = $event->get_image_url();
+                                        if ($image_url) { ?>
                                                 <div class="event-image-div">
-                                                        <img src="<?php echo $event->get_image_url(); ?>" />
+                                                        <img src="<?php echo $image_url; ?>" />
                                                 </div>
                                         <?php } ?>
                                 </div>
