@@ -9,10 +9,6 @@
     <meta name="title" content=<?php echo get_the_title(); ?> />
     <meta name="description" content=<?php echo get_bloginfo() ?> />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
     <link href="<?php echo get_bloginfo('template_directory'); ?>/style.css" rel='stylesheet'>
 
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
@@ -36,3 +32,25 @@
 </head>
 
 <body <?php body_class(); ?>>
+
+    <div class="header">
+        <span class="header-info monospace">
+            <span>WELTSPIELE</span>
+            <span> Weidendamm 8</span>
+            <span>30167 Hannover</span>
+        </span>
+
+        <span class="toggle-nav-container">
+            <span><?php echo get_the_title(); ?></span>
+            <a class="toggle-nav" href="#">☰</a>
+        </span>
+        <div class="menu-collapse">
+            <?php
+            wp_nav_menu(array(
+                'menu'           => 'hauptmenue',
+                'fallback_cb'    => false
+            ));
+            ?>
+        </div>
+
+    </div>

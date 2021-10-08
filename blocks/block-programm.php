@@ -22,7 +22,7 @@
     ?>
 
     <div class="program-month">
-        <span class="program-month-title"><?php echo $current_month_name; ?></span>
+        <div class="program-month-title"><?php echo $current_month_name; ?></div>
         <ul>
             <?php
             while ($loop->have_posts()) : $loop->the_post();
@@ -32,21 +32,45 @@
             ?>
 
                 <?php if ($event->get_begin_date()->format('m') == $current_month) { ?>
-                    <li class="program-event">
-                        <span class="program-event-date">
-                            <a href="<?php echo $event->get_url(); ?>">
-                                <?php echo $event->get_begin_date()->format('d.m.'); ?>
-                            </a>
-                        </span>
-                        <?php if (!is_null($event->get_category())) { ?>
-                            <span class="program-event-category">
-                                <?php echo $event->get_category()->get_title(); ?>
-                            </span>
-                        <?php } ?>
-                        <span class="program-event-text">
-                            <p><?php echo $event->get_title(); ?> </p>
-                        </span>
-                    </li>
+                    <a href="<?php echo $event->get_url(); ?>">
+                        <li class="program-event">
+
+                            <div class="program-event-header underline">
+                                <span style="min-width: 300px;" class="uppercase in-brackets">
+                                    <?php echo $event->get_begin_date()->format('D j'); ?>
+                                </span>
+
+                                <span class="tag-container">
+                                    <span class="program-event-tag uppercase">
+                                        <?php echo $event->get_category()->get_title(); ?>
+                                    </span>
+                                    <span class="program-event-tag uppercase accent-background">
+                                        Warnhinweise: blabla
+                                    </span>
+                                </span>
+                            </div>
+
+                            <div class="underline">
+                                <?php echo $event->get_title(); ?>
+                            </div>
+
+                            <div class="program-event-place-container">
+                                <div class="program-event-place">
+                                    <span class="program-event-place-title monospace uppercase">Weltspiele</span>
+                                    <div class="program-event-place-text">
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                    </div>
+                                </div>
+                                <div class="program-event-place">
+                                    <span class="program-event-place-title monospace uppercase">Saal III</span>
+                                    <div class="program-event-place-text">
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </a>
                 <?php } ?>
 
             <?php
@@ -58,7 +82,7 @@
 
 
     <div class="program-month">
-        <span class="program-month-title"><?php echo $next_month_name; ?></span>
+        <div class="program-month-title"><?php echo $next_month_name; ?></div>
         <ul>
             <?php
             while ($loop->have_posts()) : $loop->the_post();
@@ -69,19 +93,35 @@
 
                 <?php if ($event->get_begin_date()->format('m') == $next_month) { ?>
                     <li class="program-event">
-                        <span class="program-event-date">
-                            <a href="<?php echo $event->get_url(); ?>">
-                                <?php echo $event->get_begin_date()->format('d.m.'); ?>
-                            </a>
-                        </span>
-                        <?php if (!is_null($event->get_category())) { ?>
-                            <span class="program-event-category">
-                                <?php echo $event->get_category()->get_title(); ?>
+
+                        <div class="program-event-header underline">
+                            <span class="uppercase in-brackets">
+                                <?php echo $event->get_begin_date()->format('D j'); ?>
                             </span>
-                        <?php } ?>
-                        <span class="program-event-text">
-                            <p><?php echo $event->get_title(); ?> </p>
-                        </span>
+
+                            <span class="tag-container">
+                                <span class="program-event-tag uppercase">
+                                    <?php echo $event->get_category()->get_title(); ?>
+                                </span>
+                                <span class="program-event-tag uppercase accent-background">
+                                    Warnhinweise: blabla
+                                </span>
+                            </span>
+                        </div>
+
+                        <div class="underline">
+                            <?php echo $event->get_title(); ?>
+                        </div>
+
+                        <div class="program-event-place-container">
+                            <div class="program-event-place">
+                                <span class="program-event-place-title monospace">Weltspiele</span>
+                            </div>
+                            <div class="program-event-place">
+                                <span class="program-event-place-title monospace">Saal III</span>
+                            </div>
+                        </div>
+
                     </li>
                 <?php } ?>
 

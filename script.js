@@ -21,3 +21,10 @@ toggleNavButtons.forEach((toggleNavButton, index) => {
       listener.preventDefault();
    });
 });
+
+toggleNavButtons.forEach((toggleNavButton, index) => {
+   const menu = document.getElementsByClassName("menu-collapse")[index];
+   toggleNavButton.innerText = "☰";
+   menu.style.opacity = "0";
+   menu.style.display = "none";
+});
