@@ -28,6 +28,7 @@ Text Domain: wordpress-theme-weltspiele-club
 
 :root {
    --colorText: black;
+   --colorLine: #404040;
    --colorBackground: white;
    --accentColor: #d64222;
 }
@@ -38,6 +39,8 @@ Text Domain: wordpress-theme-weltspiele-club
    padding: 0;
    border: 0;
    transition: all 0.5s;
+   word-wrap: break-word;
+   hyphens: auto;
 }
 
 html {
@@ -46,7 +49,7 @@ html {
 
 body {
    font-family: MonumentGrotesk, sans-serif;
-   font-size: 45pt;
+   font-size: min(45pt, 8vw);
    font-weight: bold;
    margin: 0;
    padding: 0;
@@ -57,10 +60,13 @@ body {
 }
 
 .content {
-   margin-top: 10rem;
+   max-width: 69rem;
+   padding-top: 6rem;
+   padding-left: 3rem;
 }
 
 .header {
+   z-index: 900;
    position: fixed;
    top: 0;
    left: 0;
@@ -73,10 +79,12 @@ body {
 
 .header-info {
    display: inline-flex;
-   gap: 2rem;
+   flex-wrap: wrap;
+   gap: 0.5rem 2rem;
    font-size: max(1.5vw, 10pt);
    font-weight: 400;
    padding-left: 2rem;
+   vertical-align: middle;
 }
 
 a {
@@ -105,11 +113,12 @@ a {
    font-weight: bold;
    z-index: 998;
    opacity: 0;
-   font-size: 12vw;
+   font-size: min(12vw, 12vh);
    background-color: rgba(255, 255, 255, 0.75);
    text-transform: uppercase;
    padding-left: 3vw;
    padding-top: 5rem;
+   min-height: 100vh;
 }
 
 .menu-collapse ul {
@@ -118,19 +127,41 @@ a {
 
 .menu-collapse li {
    min-width: 97vw;
-   border-bottom: 0.75vw solid var(--colorText);
-   line-height: 0.75;
-   margin-bottom: 5vw;
+   border-bottom: min(0.75vw, 0.75vh) solid var(--colorLine);
+   margin-bottom: min(5vw, 5vh);
+}
+
+.landing-background-video-container {
+   z-index: 0;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+   animation: fade-in 2s ease-in;
+   background-color: transparent;
+}
+
+.landing-background-video-container video {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   min-width: 100%;
+   min-height: 100%;
+   translate: -50% -50%;
 }
 
 .program-month-title {
    text-transform: uppercase;
 }
 
+strong:before,
 .in-brackets:before {
    font-weight: 100;
    content: "(";
 }
+strong:after,
 .in-brackets:after {
    font-weight: 100;
    content: ")";
@@ -145,7 +176,31 @@ a {
 }
 
 .underline {
-   border-bottom: 0.15rem solid var(--colorText);
+   border-bottom: 0.15rem solid var(--colorLine);
+}
+
+.rich-text-box {
+   font-size: 75%;
+   line-height: min(3rem, 8vw);
+   max-width: min(100%, 63rem);
+}
+
+.underline-rich-text-box {
+   font-size: 75%;
+   line-height: min(3rem, 8vw);
+   width: 30rem;
+   overflow: hidden;
+   display: -webkit-box;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
+   text-overflow: ellipsis;
+   height: min(9rem, calc(8vw * 3));
+   background-image: repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent calc(min(3rem, 8vw) - 0.15rem),
+      var(--colorText) min(3rem, 8vw)
+   );
 }
 
 .monospace {
@@ -184,6 +239,7 @@ a {
    flex-direction: column;
    align-items: flex-start;
    justify-content: center;
+   gap: 0.25rem;
 }
 
 .program-event-tag {
@@ -202,24 +258,60 @@ a {
    flex-wrap: wrap;
 }
 
-.program-event-place-title {
+.show-date {
+   line-height: 1;
+}
+
+.center {
+   text-align: center;
+}
+
+.small-title {
    opacity: 0.5;
    font-size: 20pt;
 }
 
-.program-event-place-text {
-   font-size: 75%;
-   line-height: 1;
-   max-width: 30rem;
-   max-height: 11.5rem;
-   overflow: hidden;
-   display: -webkit-box;
-   -webkit-line-clamp: 4;
-   -webkit-box-orient: vertical;
-}
-
 .event-links .dashicons {
    font-size: xx-large;
+}
+
+.header-title {
+   width: 5rem;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
+}
+
+.single-event {
+   padding-left: 3rem;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 3rem 3rem;
+   max-width: 66rem;
+}
+
+.event-image-div img {
+   width: 30rem;
+   max-width: 100%;
+}
+
+.event-title {
+   font-size: min(45pt, 8vw);
+   width: 30rem;
+   max-width: 100%;
+}
+
+.event-left-column {
+   display: flex;
+   flex-direction: column;
+   gap: 3rem;
+   max-width: 100%;
+}
+
+.event-bottom-row {
+   gap: 3rem 3rem;
+   display: flex;
+   flex-wrap: wrap;
 }
 
 @keyframes fade-in {
@@ -228,5 +320,11 @@ a {
    }
    100% {
       opacity: 1;
+   }
+}
+
+@media (max-width: 60rem) {
+   .header-title {
+      display: none;
    }
 }

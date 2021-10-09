@@ -45,7 +45,7 @@
                                         <?php echo $event->get_category()->get_title(); ?>
                                     </span>
                                     <span class="program-event-tag uppercase accent-background">
-                                        Warnhinweise: blabla
+                                    <?php echo $event->get_warning_text(); ?>
                                     </span>
                                 </span>
                             </div>
@@ -56,15 +56,15 @@
 
                             <div class="program-event-place-container">
                                 <div class="program-event-place">
-                                    <span class="program-event-place-title monospace uppercase">Weltspiele</span>
-                                    <div class="program-event-place-text">
-                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                    <span class="small-title monospace uppercase">Weltspiele</span>
+                                    <div class="underline-rich-text-box">
+                                       <?php echo $event->get_weltspiele_text(); ?>
                                     </div>
                                 </div>
                                 <div class="program-event-place">
-                                    <span class="program-event-place-title monospace uppercase">Saal III</span>
-                                    <div class="program-event-place-text">
-                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                    <span class="small-title monospace uppercase">Saal III</span>
+                                    <div class="underline-rich-text-box">
+                                    <?php echo $event->get_saal_iii_text(); ?>
                                     </div>
                                 </div>
                             </div>
@@ -92,37 +92,45 @@
             ?>
 
                 <?php if ($event->get_begin_date()->format('m') == $next_month) { ?>
-                    <li class="program-event">
+                    <a href="<?php echo $event->get_url(); ?>">
+                        <li class="program-event">
 
-                        <div class="program-event-header underline">
-                            <span class="uppercase in-brackets">
-                                <?php echo $event->get_begin_date()->format('D j'); ?>
-                            </span>
-
-                            <span class="tag-container">
-                                <span class="program-event-tag uppercase">
-                                    <?php echo $event->get_category()->get_title(); ?>
+                            <div class="program-event-header underline">
+                                <span style="min-width: 300px;" class="uppercase in-brackets">
+                                    <?php echo $event->get_begin_date()->format('D j'); ?>
                                 </span>
-                                <span class="program-event-tag uppercase accent-background">
-                                    Warnhinweise: blabla
+
+                                <span class="tag-container">
+                                    <span class="program-event-tag uppercase">
+                                        <?php echo $event->get_category()->get_title(); ?>
+                                    </span>
+                                    <span class="program-event-tag uppercase accent-background">
+                                        Warnhinweise: blabla
+                                    </span>
                                 </span>
-                            </span>
-                        </div>
-
-                        <div class="underline">
-                            <?php echo $event->get_title(); ?>
-                        </div>
-
-                        <div class="program-event-place-container">
-                            <div class="program-event-place">
-                                <span class="program-event-place-title monospace">Weltspiele</span>
                             </div>
-                            <div class="program-event-place">
-                                <span class="program-event-place-title monospace">Saal III</span>
-                            </div>
-                        </div>
 
-                    </li>
+                            <div class="underline">
+                                <?php echo $event->get_title(); ?>
+                            </div>
+
+                            <div class="program-event-place-container">
+                                <div class="program-event-place">
+                                    <span class="program-event-place-title monospace uppercase">Weltspiele</span>
+                                    <div class="program-event-place-text underline-rich-text">
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                    </div>
+                                </div>
+                                <div class="program-event-place">
+                                    <span class="program-event-place-title monospace uppercase">Saal III</span>
+                                    <div class="program-event-place-text underline-rich-text">
+                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                    </a>
                 <?php } ?>
 
             <?php

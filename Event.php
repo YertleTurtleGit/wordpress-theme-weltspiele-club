@@ -16,6 +16,9 @@ class Event
     private const BEGIN_TIME = 'startzeit';
     private const END_TIME = 'endzeit';
     private const CATEGORY = 'kategorie';
+    private const WARNINGS = 'warnhinweise';
+    private const WELTSPIELE = 'weltspiele';
+    private const SAAL_III = 'saal_iii';
     private const TICKET_URL = 'tickets';
     private const FACEBOOK_URL = 'facebook';
     private const INSTAGRAM_URL = 'instagram';
@@ -64,21 +67,19 @@ class Event
         $date_string = '';
 
         if ($multi_day) {
-            if (date_format($begin_day, 'Y') == date_format($end_day, 'Y')) {
-                if (date_format($begin_day, 'm') == date_format($end_day, 'm')) {
-                    $date_string .= date_to_str($begin_day, 'd.') . ' – ' . date_to_str($end_day, 'd. F Y');
-                } else {
-                    $date_string .= date_to_str($begin_day, 'd. F') . ' – ' . date_to_str($end_day, 'd. F Y');
-                }
+            if (date_format($begin_day, 'm') == date_format($end_day, 'm')) {
+                $date_string .= date_to_str($begin_day, 'D j') . ' – ' . date_to_str($end_day, 'D j');
+                $date_string .= '<br>' . date_to_str($end_day, 'F');
             } else {
-                $date_string .= date_to_str($begin_day, 'd. F Y') . ' – ' . date_to_str($end_day, 'd. F Y');
+                $date_string .= date_to_str($begin_day, 'D j F') . ' – ' . date_to_str($end_day, 'D j F');
             }
         } else {
-            $date_string .= date_to_str($begin_day, 'd. F Y',);
+            $date_string .= date_to_str($begin_day, 'D j');
+            $date_string .= '<br>' . date_to_str($end_day, 'F');
         }
 
         if (!$whole_day) {
-            $date_string .= ' / ' . date_to_str($start_time, 'G:i') . ' – ' . date_to_str($end_time, 'G:i') . ' Uhr';
+            $date_string .= '<br>' . date_to_str($start_time, 'G:i') . '–' . date_to_str($end_time, 'G:i');
         }
 
         return $date_string;
@@ -97,6 +98,21 @@ class Event
         } else {
             return null;
         }
+    }
+
+    public function get_warning_text(): string
+    {
+        return strval(get_post_meta($this->id, Event::WARNINGS, true));
+    }
+
+    public function get_weltspiele_text(): string
+    {
+        return strval(get_post_meta($this->id, Event::WELTSPIELE, true));
+    }
+
+    public function get_saal_iii_text(): string
+    {
+        return strval(get_post_meta($this->id, Event::SAAL_III, true));
     }
 
     public function get_ticket_url(): string

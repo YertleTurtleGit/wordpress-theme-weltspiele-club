@@ -34,14 +34,18 @@
 <body <?php body_class(); ?>>
 
     <div class="header">
-        <span class="header-info monospace">
-            <span>WELTSPIELE</span>
-            <span> Weidendamm 8</span>
-            <span>30167 Hannover</span>
-        </span>
+        <a href="<?php echo get_home_url(); ?>">
+            <span class="header-info monospace">
+                <span>WELTSPIELE</span>
+                <span> Weidendamm 8</span>
+                <span>30167 Hannover</span>
+            </span>
+        </a>
 
         <span class="toggle-nav-container">
-            <span><?php echo get_the_title(); ?></span>
+            <?php if(is_page()) { ?>
+            <span class="header-title"><?php echo get_the_title(); ?></span>
+            <?php } ?>
             <a class="toggle-nav" href="#">☰</a>
         </span>
         <div class="menu-collapse">
