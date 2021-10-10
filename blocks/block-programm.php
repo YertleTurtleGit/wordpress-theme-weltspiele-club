@@ -45,7 +45,7 @@
                                         <?php echo $event->get_category()->get_title(); ?>
                                     </span>
                                     <span class="program-event-tag uppercase accent-background">
-                                    <?php echo $event->get_warning_text(); ?>
+                                        <?php echo $event->get_warning_text(); ?>
                                     </span>
                                 </span>
                             </div>
@@ -57,14 +57,14 @@
                             <div class="program-event-place-container">
                                 <div class="program-event-place">
                                     <span class="small-title monospace uppercase">Weltspiele</span>
-                                    <div class="underline-rich-text-box">
-                                       <?php echo $event->get_weltspiele_text(); ?>
+                                    <div class="underline-rich-text-box no-word-break">
+                                        <?php echo $event->get_weltspiele_text(); ?>
                                     </div>
                                 </div>
                                 <div class="program-event-place">
                                     <span class="small-title monospace uppercase">Saal III</span>
-                                    <div class="underline-rich-text-box">
-                                    <?php echo $event->get_saal_iii_text(); ?>
+                                    <div class="underline-rich-text-box no-word-break">
+                                        <?php echo $event->get_saal_iii_text(); ?>
                                     </div>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@
     </div>
 
 
-    <div class="program-month">
+    <!-- <div class="program-month">
         <div class="program-month-title"><?php echo $next_month_name; ?></div>
         <ul>
             <?php
@@ -105,7 +105,7 @@
                                         <?php echo $event->get_category()->get_title(); ?>
                                     </span>
                                     <span class="program-event-tag uppercase accent-background">
-                                        Warnhinweise: blabla
+                                        <?php echo $event->get_warning_text(); ?>
                                     </span>
                                 </span>
                             </div>
@@ -116,15 +116,15 @@
 
                             <div class="program-event-place-container">
                                 <div class="program-event-place">
-                                    <span class="program-event-place-title monospace uppercase">Weltspiele</span>
-                                    <div class="program-event-place-text underline-rich-text">
-                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                    <span class="small-title monospace uppercase">Weltspiele</span>
+                                    <div class="underline-rich-text-box no-word-break">
+                                        <?php echo $event->get_weltspiele_text(); ?>
                                     </div>
                                 </div>
                                 <div class="program-event-place">
-                                    <span class="program-event-place-title monospace uppercase">Saal III</span>
-                                    <div class="program-event-place-text underline-rich-text">
-                                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam
+                                    <span class="small-title monospace uppercase">Saal III</span>
+                                    <div class="underline-rich-text-box no-word-break">
+                                        <?php echo $event->get_saal_iii_text(); ?>
                                     </div>
                                 </div>
                             </div>
@@ -138,5 +138,5 @@
             wp_reset_query();
             ?>
         </ul>
-    </div>
+    </div> -->
 </div>

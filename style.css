@@ -60,9 +60,16 @@ body {
 }
 
 .content {
-   max-width: 69rem;
+   max-width: max(69rem, 60vw);
    padding-top: 6rem;
-   padding-left: 3rem;
+   padding-left: max(1rem, 3vw);
+   position: relative;
+   height: auto;
+}
+
+.page-content {
+   max-width: max(69rem, 60vw);
+   padding-left: max(1rem, 10vw);
 }
 
 .header {
@@ -92,13 +99,8 @@ a {
    text-decoration: none;
 }
 
-.content {
-   padding-left: 1rem;
-   position: relative;
-   height: auto;
-}
-
 .toggle-nav-container {
+   padding-right: 1rem;
    z-index: 998;
    opacity: 1;
    z-index: 999;
@@ -113,12 +115,13 @@ a {
    font-weight: bold;
    z-index: 998;
    opacity: 0;
-   font-size: min(12vw, 12vh);
-   background-color: rgba(255, 255, 255, 0.75);
+   font-size: min(12vw, 20vh);
+   background-color: rgba(255, 255, 255, 0.9);
    text-transform: uppercase;
    padding-left: 3vw;
-   padding-top: 5rem;
+   padding-top: 8rem;
    min-height: 100vh;
+   line-height: 0.75;
 }
 
 .menu-collapse ul {
@@ -129,6 +132,7 @@ a {
    min-width: 97vw;
    border-bottom: min(0.75vw, 0.75vh) solid var(--colorLine);
    margin-bottom: min(5vw, 5vh);
+   border-color: var(--colorText);
 }
 
 .landing-background-video-container {
@@ -149,7 +153,7 @@ a {
    left: 50%;
    min-width: 100%;
    min-height: 100%;
-   translate: -50% -50%;
+   transform: translate(-50%, -50%);
 }
 
 .program-month-title {
@@ -179,15 +183,14 @@ strong:after,
    border-bottom: 0.15rem solid var(--colorLine);
 }
 
-.rich-text-box {
-   font-size: 75%;
-   line-height: min(3rem, 8vw);
-   max-width: min(100%, 63rem);
-}
-
+.rich-text-box,
 .underline-rich-text-box {
    font-size: 75%;
    line-height: min(3rem, 8vw);
+   max-width: min(calc(100vw - 1rem), 63rem);
+}
+
+.underline-rich-text-box {
    width: 30rem;
    overflow: hidden;
    display: -webkit-box;
@@ -223,6 +226,7 @@ strong:after,
 .program-event {
    display: flex;
    flex-direction: column;
+   max-width: 69rem;
 }
 
 .program-event-date:before {
@@ -268,7 +272,7 @@ strong:after,
 
 .small-title {
    opacity: 0.5;
-   font-size: 20pt;
+   font-size: min(20pt, 4vw);
 }
 
 .event-links .dashicons {
@@ -283,11 +287,12 @@ strong:after,
 }
 
 .single-event {
-   padding-left: 3rem;
+   padding-top: 3rem;
+   padding-left: min(3rem, 3vw);
    display: flex;
    flex-wrap: wrap;
    gap: 3rem 3rem;
-   max-width: 66rem;
+   max-width: min(66rem, 97vw);
 }
 
 .event-image-div img {
@@ -312,6 +317,19 @@ strong:after,
    gap: 3rem 3rem;
    display: flex;
    flex-wrap: wrap;
+}
+
+.awareness-language-container {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 3rem 3rem;
+   padding-bottom: 6rem;
+}
+
+.no-word-break {
+   word-wrap: normal;
+   word-break: normal;
+   hyphens: none;
 }
 
 @keyframes fade-in {

@@ -19,6 +19,7 @@ class Event
     private const WARNINGS = 'warnhinweise';
     private const WELTSPIELE = 'weltspiele';
     private const SAAL_III = 'saal_iii';
+    private const COST = 'kosten';
     private const TICKET_URL = 'tickets';
     private const FACEBOOK_URL = 'facebook';
     private const INSTAGRAM_URL = 'instagram';
@@ -113,6 +114,11 @@ class Event
     public function get_saal_iii_text(): string
     {
         return strval(get_post_meta($this->id, Event::SAAL_III, true));
+    }
+
+    public function get_cost_text(): string
+    {
+        return strval(get_post_meta($this->id, Event::COST, true));
     }
 
     public function get_ticket_url(): string

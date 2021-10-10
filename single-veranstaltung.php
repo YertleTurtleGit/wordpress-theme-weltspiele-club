@@ -38,6 +38,22 @@
             </div>
 
             <div class="event-bottom-row">
+
+                <div class="program-event-place">
+                    <span class="small-title monospace uppercase">Weltspiele</span>
+                    <div class="underline-rich-text-box no-word-break">
+                        <?php echo $event->get_weltspiele_text(); ?>
+                    </div>
+                </div>
+
+                <div class="program-event-place">
+                    <span class="small-title monospace uppercase">Saal III</span>
+                    <div class="underline-rich-text-box no-word-break">
+                        <?php echo $event->get_saal_iii_text(); ?>
+                    </div>
+                </div>
+
+
                 <div>
                     <div class="small-title monospace uppercase">Links</div>
                     <div class="underline-rich-text-box event-links">
@@ -46,37 +62,55 @@
                         $facebook_url = $event->get_facebook_url();
                         $instagram_url = $event->get_instagram_url();
                         $sound_cloud_url = $event->get_sound_cloud_url();
+                        $link_before = false;
                         ?>
 
                         <?php if ($tickets_url) { ?>
                             <a href="<?php echo $tickets_url; ?>" target="_blank">
-                                <span>Tickets</span>
+                                Tickets
                             </a>
-                        <?php } ?>
+                        <?php
+                            $link_before = true;
+                        } ?>
 
                         <?php if ($facebook_url) { ?>
                             <a href="<?php echo $facebook_url; ?>" target="_blank">
-                                <span>Facebook</span>
+                                <?php if (§link_before) {
+                                    echo ", ";
+                                } ?>Facebook
                             </a>
-                        <?php } ?>
+                        <?php
+                            $link_before = true;
+                        }
+                        ?>
 
                         <?php if ($instagram_url) { ?>
                             <a href="<?php echo $instagram_url; ?>" target="_blank">
-                                <span>Instagram</span>
+                                <?php if (§link_before) {
+                                    echo ", ";
+                                } ?>Instagram
                             </a>
-                        <?php } ?>
+                        <?php
+                            $link_before = true;
+                        }
+                        ?>
 
                         <?php if ($sound_cloud_url) { ?>
                             <a href="<?php echo $sound_cloud_url; ?>" target="_blank">
-                                <span>SoundCloud</span>
+                                <?php if (§link_before) {
+                                    echo ", ";
+                                } ?>SoundCloud
                             </a>
-                        <?php } ?>
+                        <?php
+                            $link_before = true;
+                        }
+                        ?>
                     </div>
                 </div>
                 <div>
                     <div class="small-title monospace uppercase">Kosten</div>
                     <div class="underline-rich-text-box">
-                        <span>999 Euro</span>
+                        <?php echo $event->get_cost_text(); ?>
                     </div>
                 </div>
             </div>

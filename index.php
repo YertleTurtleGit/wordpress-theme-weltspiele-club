@@ -1,6 +1,23 @@
 <?php get_header(); ?>
 
 
+<style>
+    body {
+        background-color: black;
+    }
+
+    .header,
+    .header * {
+        background-color: transparent;
+    }
+
+    .header * {
+        color: white;
+        border-color: white !important;
+    }
+</style>
+
+
 <div class="landing-background-video-container">
     <video poster="<?php echo get_bloginfo('template_directory'); ?>/images/backgroundimage.jpg" autoplay muted loop playsinline>
         <source src="<?php echo get_bloginfo('template_directory'); ?>/images/backgroundvideo.mp4" />
