@@ -30,7 +30,7 @@ function insert_fb_in_head()
     }
 
     $page_permalink = get_the_permalink();
-    $page_title =  get_the_title();
+    $page_title =  'Weltspiele Club ' . get_the_title();
     $page_name = get_bloginfo();
     $og_title = $page_title;
 
@@ -150,7 +150,8 @@ function remove_draft_widget()
 
 function date_to_str(DateTime $date, string $format)
 {
-    return date_i18n($format, $date->getTimestamp());
+    return $date->format($format);
+    //return date_i18n($format, $date->getTimestamp());
 }
 
 

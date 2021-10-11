@@ -62,6 +62,7 @@ class Event
         $begin_day = date_create(get_post_meta($this->id, Event::BEGIN_DATE, true));
         $end_day = date_create(get_post_meta($this->id, Event::END_DATE, true));
         $whole_day = boolval(get_post_meta($this->id, Event::WHOLE_DAY, true));
+        $open_end = boolval(get_post_meta($this->id, Event::OPEN_END, true));
         $start_time = date_create(get_post_meta($this->id, Event::BEGIN_TIME, true));
         $end_time = date_create(get_post_meta($this->id, Event::END_TIME, true));
 
@@ -80,7 +81,10 @@ class Event
         }
 
         if (!$whole_day) {
-            $date_string .= '<br>' . date_to_str($start_time, 'G:i') . '–' . date_to_str($end_time, 'G:i');
+            $date_string .= '<br>' . date_to_str($start_time, 'G:i');
+            if (!$open_end) {
+                $date_string .= '–' . date_to_str($end_time, 'G:i');
+            }
         }
 
         return $date_string;

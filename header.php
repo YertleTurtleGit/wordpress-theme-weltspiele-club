@@ -27,7 +27,7 @@
     }
     wp_head(); ?>
 
-    <title><?php echo get_the_title(); ?></title>
+    <title>Weltspiele Club</title>
 
 </head>
 

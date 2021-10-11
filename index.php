@@ -17,6 +17,10 @@
     }
 </style>
 
+<div class="index-info uppercase monospace">
+    cosmos for music, arts and culture
+</div>
+
 
 <div class="landing-background-video-container">
     <video poster="<?php echo get_bloginfo('template_directory'); ?>/images/backgroundimage.jpg" autoplay muted loop playsinline>

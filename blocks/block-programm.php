@@ -23,7 +23,7 @@
 
     <div class="program-month">
         <div class="program-month-title"><?php echo $current_month_name; ?></div>
-        <ul>
+        <ul class="programm-list">
             <?php
             while ($loop->have_posts()) : $loop->the_post();
 
@@ -44,9 +44,11 @@
                                     <span class="program-event-tag uppercase">
                                         <?php echo $event->get_category()->get_title(); ?>
                                     </span>
-                                    <span class="program-event-tag uppercase accent-background">
-                                        <?php echo $event->get_warning_text(); ?>
-                                    </span>
+                                    <?php if ($event->get_warning_text()) { ?>
+                                        <span class="program-event-tag uppercase accent-background">
+                                            <?php echo $event->get_warning_text(); ?>
+                                        </span>
+                                    <?php } ?>
                                 </span>
                             </div>
 
