@@ -15,6 +15,10 @@
         color: white;
         border-color: white !important;
     }
+
+    .footer {
+        display: none;
+    }
 </style>
 
 <div class="index-info uppercase monospace">

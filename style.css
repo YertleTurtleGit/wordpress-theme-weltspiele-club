@@ -367,6 +367,33 @@ strong:after,
    hyphens: none;
 }
 
+.footer {
+   max-width: 100%;
+   margin-top: 3rem;
+   padding-top: 3rem;
+   border-top: 0.15rem solid var(--colorLine);
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: flex-start;
+   gap: 3rem 9rem;
+   font-size: min(20pt, 4vw);
+}
+
+.footer-logo img {
+   max-width: min(15rem, 75vw);
+}
+
+.footer-menu ul,
+.footer-links ul {
+   list-style: none;
+}
+
+.footer-info {
+   align-self: flex-end;
+   justify-self: end;
+   padding-bottom: 1rem;
+}
+
 @keyframes fade-in {
    0% {
       opacity: 0;

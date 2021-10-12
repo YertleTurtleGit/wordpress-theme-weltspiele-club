@@ -23,11 +23,7 @@ function insert_fb_in_head()
     if (!is_singular())
         return;
 
-    if ($excerpt = $post->post_excerpt) {
-        $excerpt = strip_tags($post->post_excerpt);
-    } else {
-        $excerpt = get_bloginfo('description');
-    }
+    $excerpt = get_bloginfo('description');
 
     $page_permalink = get_the_permalink();
     $page_title =  'Weltspiele Club ' . get_the_title();
@@ -36,6 +32,7 @@ function insert_fb_in_head()
 
     echo '<title>' . $page_title . '</title>';
 
+    echo '<meta property="title" content="' . $og_title . '"/>';
     echo '<meta property="og:title" content="' . $og_title . '"/>';
     echo '<meta property="og:description" content="' . $excerpt . '"/>';
     echo '<meta property="og:type" content="article"/>';
@@ -203,3 +200,12 @@ function get_veranstaltung_bild(int $id)
 
     return '<div class="event-image-div"><img src="' . $image_url . '" /></div>';
 }
+
+function allow_editor_menu()
+{
+    $roleObject = get_role('editor');
+    if (!$roleObject->has_cap('edit_theme_options')) {
+        $roleObject->add_cap('edit_theme_options');
+    }
+}
+add_action('admin_head', 'allow_editor_menu');

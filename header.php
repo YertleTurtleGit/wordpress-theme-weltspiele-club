@@ -6,8 +6,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <meta name="author" content="Endric Merker weltspieleclub@galzone.de">
-    <meta name="title" content=<?php echo get_the_title(); ?> />
-    <meta name="description" content=<?php echo get_bloginfo() ?> />
+    <meta name="title" content="<?php echo 'Weltspiele Club ' . get_the_title(); ?>" />
+    <meta name="description" content="<?php echo get_bloginfo('description'); ?>" />
 
     <link href="<?php echo get_bloginfo('template_directory'); ?>/style.css" rel='stylesheet'>
 
