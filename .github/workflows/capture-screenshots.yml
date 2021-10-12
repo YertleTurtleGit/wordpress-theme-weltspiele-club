@@ -20,6 +20,7 @@ jobs:
           source: https://weltspiele.club
           destination: screenshot.png
           full-page: true
+          delay: 30
 
       - uses: actions/download-artifact@v2
         with:
