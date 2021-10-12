@@ -17,7 +17,7 @@ jobs:
         uses: swinton/screenshot-website@v1.x
         with:
           width: 1200
-          source: http://club.weltspiele.club
+          source: https://weltspiele.club
           destination: screenshot.png
           full-page: true
 
