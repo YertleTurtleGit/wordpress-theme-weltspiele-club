@@ -59,10 +59,16 @@ body {
    background-color: var(--colorBackground);
 }
 
+p {
+   font-size: 60%;
+   line-height: 1.4;
+}
+
 .content {
    max-width: max(69rem, 60vw);
    padding-top: 6rem;
    padding-left: max(1rem, 3vw);
+   padding-right: max(1rem, 10vw);
    position: relative;
    height: auto;
 }
@@ -184,11 +190,13 @@ a:hover {
 }
 
 strong:before,
+h2:before,
 .in-brackets:before {
    font-weight: 100;
    content: "(";
 }
 strong:after,
+h2:after,
 .in-brackets:after {
    font-weight: 100;
    content: ")";

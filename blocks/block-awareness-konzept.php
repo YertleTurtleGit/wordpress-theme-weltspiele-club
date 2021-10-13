@@ -1,13 +1,15 @@
 <?php
-function draw_language($name, $echo_name = null): void
-{
-    if ($echo_name == null) {
-        $echo_name = $name;
-    }
+if( !function_exists( 'draw_language' )) {
+	function draw_language($name, $echo_name = null): void
+	{
+		if ($echo_name == null) {
+			$echo_name = $name;
+		}
 
-    if (block_value($name)) {
-        echo "<a href='" . wp_get_attachment_url(block_value($name)) . "' target='blank'>" . $echo_name . "</a>";
-    }
+		if (block_value($name)) {
+			echo "<a href='" . wp_get_attachment_url(block_value($name)) . "' target='blank'>" . $echo_name . "</a>";
+		}
+	}
 }
 ?>
 
