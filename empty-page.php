@@ -1,3 +1,8 @@
+<?php
+/*
+Template Name: Empty Page
+*/
+?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?> class="no-js">
 
@@ -38,25 +43,17 @@
 
 <body <?php body_class(); ?>>
 
-    <div id="header">
-
-        <a href="<?php echo get_home_url() ?>">
-            <img id="logo-big" src="<?php echo get_bloginfo('template_directory'); ?>/images/logo-big.png" />
-        </a>
-
-        <div class="menu-all">
-            <div class="menu-collapse">
-                <?php
-                wp_nav_menu(array(
-                    'menu'           => 'hauptmenue',
-                    'fallback_cb'    => false
-                ));
-                ?>
-
-                <?php get_search_form(); ?>
-            </div>
-            <a class="toggle-nav" href="#">☰</a>
-        </div>
-
-
+    <div style="display: flex; align-items: center; width: 100%; height: 100vh; justify-content: center; border-bottom: 0.25rem solid black;">
+        <img style="max-width: 90%; width: 40rem;" id="logo-big" src="<?php echo get_bloginfo('template_directory'); ?>/images/logo-big.png" />
     </div>
+
+
+    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+            <?php the_content(); ?>
+    <?php endwhile;
+    endif; ?>
+
+    <?php wp_footer(); ?>
+</body>
+
+</html>

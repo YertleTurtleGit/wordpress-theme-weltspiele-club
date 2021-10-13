@@ -1,7 +1,8 @@
 <?php
 require get_theme_file_path('Event.php');
-require get_theme_file_path('EventSeries.php');
-require get_theme_file_path('EventCategory.php');
+require get_theme_file_path('EventFormat.php');
+require get_theme_file_path('Artist.php');
+require get_theme_file_path('Genre.php');
 
 
 function init_hauptmenue()
@@ -9,6 +10,7 @@ function init_hauptmenue()
     register_nav_menu('hauptmenue', __('Hauptmenü'));
 }
 add_action('init', 'init_hauptmenue');
+
 
 // Adding the Open Graph in the Language Attributes
 function add_opengraph_doctype($output)
@@ -23,16 +25,19 @@ function insert_fb_in_head()
     if (!is_singular())
         return;
 
-    $excerpt = get_bloginfo('description');
+    if ($excerpt = $post->post_excerpt) {
+        $excerpt = strip_tags($post->post_excerpt);
+    } else {
+        $excerpt = get_bloginfo('description');
+    }
 
     $page_permalink = get_the_permalink();
-    $page_title =  'Weltspiele Club ' . get_the_title();
+    $page_title =  get_the_title();
     $page_name = get_bloginfo();
     $og_title = $page_title;
 
     echo '<title>' . $page_title . '</title>';
 
-    echo '<meta property="title" content="' . $og_title . '"/>';
     echo '<meta property="og:title" content="' . $og_title . '"/>';
     echo '<meta property="og:description" content="' . $excerpt . '"/>';
     echo '<meta property="og:type" content="article"/>';
@@ -66,7 +71,7 @@ function my_login_logo()
     <style type="text/css">
         #login h1 a,
         .login h1 a {
-            background-image: url(http://club.weltspiele.club/wp-content/uploads/2021/08/cropped-logo-big.png);
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/favicon.png);
             min-height: 100%;
             width: 100%;
             background-repeat: no-repeat;
@@ -89,11 +94,7 @@ add_action('widgets_init', 'widgets_init');
 
 add_theme_support('post-thumbnails');
 
-function ww_load_dashicons()
-{
-    wp_enqueue_style('dashicons');
-}
-add_action('wp_enqueue_scripts', 'ww_load_dashicons', 999);
+
 
 // Removes from admin menu
 add_action('admin_menu', 'my_remove_admin_menus');
@@ -144,68 +145,3 @@ function remove_draft_widget()
 }
 
 // End remove post type
-
-function date_to_str(DateTime $date, string $format)
-{
-    return $date->format($format);
-    //return date_i18n($format, $date->getTimestamp());
-}
-
-
-function get_veranstaltung_datum(int $id): string
-{
-    $mehrtagig = (bool) get_post_meta($id, 'mehrtagig', true);
-    $startdatum = date_create(get_post_meta($id, 'startdatum', true));
-    $enddatum = date_create(get_post_meta($id, 'enddatum', true));
-    $ganztagig = (bool) get_post_meta($id, 'ganztagig', true);
-    $startzeit = date_create(get_post_meta($id, 'startzeit', true));
-    $endzeit = date_create(get_post_meta($id, 'endzeit', true));
-
-    $date_string = '';
-
-    if ($mehrtagig) {
-        if (date_format($startdatum, 'Y') == date_format($enddatum, 'Y')) {
-            if (date_format($startdatum, 'm') == date_format($enddatum, 'm')) {
-                $date_string .= date_to_str($startdatum, 'd.') . ' – ' . date_to_str($enddatum, 'd. F Y');
-            } else {
-                $date_string .= date_to_str($startdatum, 'd. F') . ' – ' . date_to_str($enddatum, 'd. F Y');
-            }
-        } else {
-            $date_string .= date_to_str($startdatum, 'd. F Y') . ' – ' . date_to_str($enddatum, 'd. F Y');
-        }
-    } else {
-        $date_string .= date_to_str($startdatum, 'd. F Y',);
-    }
-
-    if (!$ganztagig) {
-        $date_string .= ' / ' . date_to_str($startzeit, 'G:i') . ' – ' . date_to_str($endzeit, 'G:i') . ' Uhr';
-    }
-
-    return $date_string;
-}
-
-function get_veranstaltung_bild_url(int $id)
-{
-    $veranstaltungsbild = get_post_meta($id, 'bild', true);
-    return wp_get_attachment_image_src($veranstaltungsbild, 'large')[0];
-}
-
-function get_veranstaltung_bild(int $id)
-{
-    $image_url = get_veranstaltung_bild_url($id);
-
-    if (!$image_url) {
-        return '';
-    }
-
-    return '<div class="event-image-div"><img src="' . $image_url . '" /></div>';
-}
-
-function allow_editor_menu()
-{
-    $roleObject = get_role('editor');
-    if (!$roleObject->has_cap('edit_theme_options')) {
-        $roleObject->add_cap('edit_theme_options');
-    }
-}
-add_action('admin_head', 'allow_editor_menu');

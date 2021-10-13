@@ -1,1 +1,1 @@
-[<img src="screenshot.png">](http://club.weltspiele.club/)
+[<img src="screenshot.png">](http://radio.weltspiele.club/)
